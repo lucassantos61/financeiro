@@ -1,28 +1,28 @@
 <?php
 
-require_once  __DIR__.'/vendor/autoload.php';
+require_once  __DIR__. '/vendor/autoload.php';
 
-$db = include __DIR__.'/config/db.php';
+$db = include __DIR__. '/config/db.php';
 list(
     'driver' => $adapter,
     'host' => $host,
     'database' => $name,
     'username' => $user,
-    'password'=>$pass,
-    'charset' => $char,
+    'password' => $pass,
+    'charset' => $charset,
     'collation' => $collation
     ) = $db['development'];
-    
+   
 return [
     'paths' => [
         'migrations' => [
             __DIR__.'/db/migrations'
         ],
         'seeds' => [
-            __DIR__.'db/seeds'
+            __DIR__.'/db/seeds'
         ]
     ],
-    'enviroments' => [
+    'environments' => [
         'default_migration_table' => 'migrations',
         'default_database' => 'development',
         'development' => [
@@ -31,7 +31,7 @@ return [
             'name' => $name,
             'user' => $user,
             'pass' => $pass,
-            'charset' => $char,
+            'charset' => $charset,
             'collation' => $collation
         ]
     ]

@@ -2,7 +2,7 @@
 
 return [
     "development" => [
-        'driver' =>'mysql',
+        'driver' => 'mysql',
         'host' => 'localhost',
         'database' => 'financas',
         'username' => 'root',
