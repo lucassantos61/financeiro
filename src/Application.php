@@ -1,6 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Financas;
+
+use Financas\Plugins\PluginInterface;
+
 
 class Application
 {
@@ -16,7 +20,7 @@ class Application
         return $this->serviceContainer->get($name);
     }
 
-    public function addService(string $name, $service)
+    public function addService(string $name, $service): void
     {
         if(is_callable($service)){
             $this->serviceContainer->addLazy($name,$service);
@@ -24,5 +28,10 @@ class Application
         }
             $this->serviceContainer->add($name,$service);
             return;
+    }
+
+    public function plugin (PluginInterface $plugin): void
+    {
+        $plugin->register($this->serviceContainer);
     }
 }
