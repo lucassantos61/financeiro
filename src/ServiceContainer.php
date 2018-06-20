@@ -2,7 +2,7 @@
 
 namespace Financas;
 
-use Pimple\Psr11\Container;
+use Xtreamwayz\Pimple\Container;
 
 class ServiceContainer implements ServiceContainerInterface
 {
