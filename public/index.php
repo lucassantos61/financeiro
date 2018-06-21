@@ -2,9 +2,11 @@
 
 use Financas\ServiceContainer;
 use Financas\Application;
-use Financas\Plugins\RoutePlugin;;
+use Financas\Plugins\RoutePlugin;
+use Financas\Plugins\ViewPlugin;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response;
+use Psr\Http\Message\RequestInterface;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -12,11 +14,11 @@ $serviceContaner = new ServiceContainer();
 $app = new Application($serviceContaner);
 
 $app->plugin(new RoutePlugin());
+$app->plugin(new ViewPlugin());
 
-$app->get('/home/{name}/{id}',function(ServerRequestInterface $request){
-    $response = new Response();
-    $response->getBody()->write('Response com diactoros');
-    return $response;
+$app->get('/{name}', function(RequestInterface $request) use($app){
+    $view = $app->service('view.renderer');
+    return $view->render('teste.html.twig', ['name' => $request->getAttribute('name')]);
 });
 
 $app->start();
