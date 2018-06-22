@@ -1,5 +1,7 @@
 <?php
+declare(strict_types=1);
 namespace Financas\Plugins;
+
 use Financas\Plugins\PluginInterface;
 use Financas\ServiceContainerInterface;
 use Interop\Container\ContainerInterface;
