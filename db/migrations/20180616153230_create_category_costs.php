@@ -10,7 +10,7 @@ class CreateCategoryCosts extends AbstractMigration
     $this->table('category_costs')
         ->addColumn('name','string')
         ->addColumn('created_at','datetime')
-        ->addColumn('update_at','datetime')
+        ->addColumn('updated_at','datetime')
         ->save();
   }
   public function down()
