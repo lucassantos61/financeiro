@@ -1,8 +1,8 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 namespace Financas\Repository;
 
-interface RespositoryInterface
+interface RepositoryInterface
 {
     public function all(): array;
     public function create(array $data);

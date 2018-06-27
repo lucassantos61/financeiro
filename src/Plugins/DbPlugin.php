@@ -5,6 +5,7 @@ namespace Financas\Plugins;
 use Financas\Plugins\PluginInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Financas\ServiceContainerInterface;
+use Financas\Repository\RepositoryFactory;
 
 class DbPlugin implements PluginInterface
 {
@@ -14,5 +15,7 @@ class DbPlugin implements PluginInterface
         $config = include __DIR__."/../../config/db.php";
         $capsule->addConnection($config['development']);
         $capsule->bootEloquent();
+
+        $container->add("repository.factory",new RepositoryFactory);
     }
 }
