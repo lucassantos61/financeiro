@@ -18,5 +18,6 @@ $app->plugin(new ViewPlugin());
 $app->plugin(new DbPlugin());
 
 require_once __DIR__ . '/../src/controllers/category-costs.php';
+require_once __DIR__ . '/../src/controllers/user.php';
 
 $app->start();

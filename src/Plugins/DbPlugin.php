@@ -8,6 +8,7 @@ use Financas\ServiceContainerInterface;
 use Financas\Repository\RepositoryFactory;
 use Interop\Container\ContainerInterface;
 use Financas\Models\CategoryCost;
+use Financas\Models\User;
 
 class DbPlugin implements PluginInterface
 {
@@ -22,7 +23,9 @@ class DbPlugin implements PluginInterface
         $container->addLazy('category-cost.repository', function (ContainerInterface $container) {
             return $container->get('repository.factory')->factory(CategoryCost::class);
         });
-        
+        $container->addLazy('user.repository', function (ContainerInterface $container) {
+            return $container->get('repository.factory')->factory(User::class);
+        });
 
     }
 }
