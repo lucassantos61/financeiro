@@ -1,7 +1,7 @@
 <?php
 
 use Psr\Http\Message\ServerRequestInterface;
-use Financas\Models\User;
+
 
 $app
     ->get('/users', function() use($app){
