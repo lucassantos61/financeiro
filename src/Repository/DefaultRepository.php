@@ -25,10 +25,10 @@ class DefaultRepository implements RepositoryInterface
         $this->_model->save();
         return $this->_model;
     }
-    public function find(int $id)
+    public function find(int $id ,  bool $failIfNotExists = true)
     {
-        $model  = $this->_model->findOrFail($id);
-        return $model;
+    
+        return $failIfNotExists ? $this->_model->findOrFail($id) : $this->_model->find($id) ;
     }
     public function update(int $id, array $data)
     {
@@ -43,5 +43,10 @@ class DefaultRepository implements RepositoryInterface
       
         $model  = $this->_model->findOrFail($id);
         $model->delete();  
+    }
+
+    public function findByField(string $field, $value): array
+    {
+        $model = $this->model->where($field,'=',$value);
     }
 }
