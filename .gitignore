@@ -2,3 +2,4 @@ vendor/
 db/seeds/
 composer.lock
 .gitignore
+.idea/
