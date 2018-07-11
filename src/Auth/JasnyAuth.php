@@ -22,7 +22,7 @@ class JasnyAuth extends \Jasny\Auth
 
     public function fetchUserByUsername($username)
     {   
-        return $this->repository->finfByField('email',$username)[0];
+        return $this->repository->findByField('email',$username)[0];
     }
 
     public function getCurrentUserId()

@@ -45,8 +45,8 @@ class DefaultRepository implements RepositoryInterface
         $model->delete();  
     }
 
-    public function findByField(string $field, $value): array
+    public function findByField(string $field, $value)
     {
-        $model = $this->model->where($field,'=',$value);
+       return  $this->_model->where($field,'=',$value)->get();
     }
 }
