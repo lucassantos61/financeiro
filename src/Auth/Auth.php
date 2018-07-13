@@ -2,6 +2,8 @@
 declare(strict_types=1);
 namespace Financas\Auth;
 
+use Financas\Models\UserInterface;
+
 class Auth implements AuthInterface
 {
     private $jasnyAuth;
@@ -19,12 +21,12 @@ class Auth implements AuthInterface
 
     public function check(): bool
     {
-        return $this->jasnyAuth->user() !== null;
+       return $this->user() !== null;
     }
 
     public function logout(): void
     {
-        
+        $this->jasnyAuth->logout();
     }
 
     public function hashPassword(string $password): string
@@ -37,5 +39,10 @@ class Auth implements AuthInterface
         if(session_status() == PHP_SESSION_NONE){
             session_start();
         }
+    }
+
+    public function user(): ?UserInterface
+    {
+        return $this->jasnyAuth->user();
     }
 }
