@@ -8,6 +8,7 @@ use Financas\Repository\RepositoryInterface;
 
 class JasnyAuth extends \Jasny\Auth
 {
+    use Sessions;
     private $repository;
 
     public function __construct(RepositoryInterface $repository)
@@ -25,13 +26,5 @@ class JasnyAuth extends \Jasny\Auth
         return $this->repository->findByField('email',$username)[0];
     }
 
-    public function getCurrentUserId()
-    {
 
-    }
-
-    public function persistCurrentUser()
-    {
-        
-    }
 }
