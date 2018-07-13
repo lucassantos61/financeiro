@@ -9,6 +9,7 @@ class Auth implements AuthInterface
     public function __construct(JasnyAuth $jasnyAuth)
     {
         $this->jasnyAuth = $jasnyAuth;
+        $this->sessionStart();
     }
     public function login(array $credencials): bool
     {
@@ -18,7 +19,7 @@ class Auth implements AuthInterface
 
     public function check(): bool
     {
-        
+        return $this->jasnyAuth->user() !== null;
     }
 
     public function logout(): void
@@ -29,5 +30,12 @@ class Auth implements AuthInterface
     public function hashPassword(string $password): string
     {
         return $this->jasnyAuth->hashPassword($password);
+    }
+
+    protected function sessionStart()
+    {
+        if(session_status() == PHP_SESSION_NONE){
+            session_start();
+        }
     }
 }
